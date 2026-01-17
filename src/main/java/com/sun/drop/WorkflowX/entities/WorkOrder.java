@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
+@Table(name = "work_orders")
 public class WorkOrder extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

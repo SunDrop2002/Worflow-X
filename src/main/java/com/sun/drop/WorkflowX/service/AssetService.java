@@ -1,7 +1,7 @@
 package com.sun.drop.WorkflowX.service;
 
 import com.sun.drop.WorkflowX.dto.AssetResponseDto;
-import com.sun.drop.WorkflowX.dto.CreateAssetDto;
+import com.sun.drop.WorkflowX.dto.CreateAssetRequestDto;
 import com.sun.drop.WorkflowX.entities.Asset;
 import com.sun.drop.WorkflowX.mapper.AssetMapper;
 import com.sun.drop.WorkflowX.repository.AssetRepository;
@@ -21,12 +21,12 @@ public class AssetService {
 
     // get a list of Assets
     @Transactional(readOnly = true)
-    public List<AssetResponseDto> getAssets() {
+    public List<AssetResponseDto> getAllAssets() {
         return assetRepository.findAll().stream().map(AssetMapper::toDTO).toList();
     }
 
     // create an asset
-    public AssetResponseDto createAsset(CreateAssetDto assetDto) {
+    public AssetResponseDto createAsset(CreateAssetRequestDto assetDto) {
 
         Asset asset = new Asset();
         asset.setName(assetDto.getName());

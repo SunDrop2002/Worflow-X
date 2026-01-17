@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
+@Table(name = "assets")
 public class Asset extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

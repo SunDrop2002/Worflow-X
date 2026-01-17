@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CreateAssetDto {
+public class CreateAssetRequestDto {
     @NotBlank
     String name;
 
