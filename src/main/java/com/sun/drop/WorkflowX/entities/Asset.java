@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 public class Asset {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     private String name;
 

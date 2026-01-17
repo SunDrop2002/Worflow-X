@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class WorkOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "asset_id")
