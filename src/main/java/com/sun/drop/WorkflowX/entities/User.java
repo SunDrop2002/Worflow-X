@@ -1,31 +1,30 @@
 package com.sun.drop.WorkflowX.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.validation.constraints.NotNull;
+import com.sun.drop.WorkflowX.audits.Auditable;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.data.annotation.CreatedDate;
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
-public class User {
+public class User extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "user_id")
     private Long id;
 
-    @NotNull
+    @NotBlank
     private String name;
 
-    @NotNull
+    @NotBlank
     private String role;
 
-    @NotNull
+    @NotBlank
+    @Email
     private String email;
-
-    private LocalDateTime createdAt;
 }
