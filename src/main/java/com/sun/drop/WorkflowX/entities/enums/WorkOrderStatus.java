@@ -1,6 +1,6 @@
 package com.sun.drop.WorkflowX.entities.enums;
 
-public enum Status {
+public enum WorkOrderStatus {
     OPEN,
     IN_PROGRESS,
     CLOSED;

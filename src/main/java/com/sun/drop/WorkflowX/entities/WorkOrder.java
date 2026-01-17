@@ -1,6 +1,6 @@
 package com.sun.drop.WorkflowX.entities;
 
-import com.sun.drop.WorkflowX.entities.enums.Status;
+import com.sun.drop.WorkflowX.entities.enums.WorkOrderStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,7 +25,7 @@ public class WorkOrder {
     @JoinColumn(name = "assigned_to_id")
     private User assignedTo;
 
-    private Status status;
+    private WorkOrderStatus workOrderStatus;
 
     private LocalDateTime createdAt;
 }
