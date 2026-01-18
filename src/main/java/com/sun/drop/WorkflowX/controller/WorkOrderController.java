@@ -4,6 +4,7 @@ import com.sun.drop.WorkflowX.dto.CreateUserRequestDto;
 import com.sun.drop.WorkflowX.dto.CreateWorkOrderRequestDto;
 import com.sun.drop.WorkflowX.dto.WorkOrderResponseDto;
 import com.sun.drop.WorkflowX.entities.WorkOrder;
+import com.sun.drop.WorkflowX.entities.enums.WorkOrderStatus;
 import com.sun.drop.WorkflowX.service.WorkOrderService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -36,5 +37,10 @@ public class WorkOrderController {
     public ResponseEntity<WorkOrderResponseDto> getWorkOrderById(@PathVariable Long id) {
         WorkOrderResponseDto workOrder = this.workOrderService.getWorkOrderById(id);
         return ResponseEntity.ok().body(workOrder);
+    }
+    @PatchMapping("/{id}/status")
+    public ResponseEntity<Void> setWorkOrderStatus(@RequestParam WorkOrderStatus status, @PathVariable Long id) {
+        this.workOrderService.updateWorkOrderStatus(status,id);
+        return ResponseEntity.noContent().build();
     }
 }

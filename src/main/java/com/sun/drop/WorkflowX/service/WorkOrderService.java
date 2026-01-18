@@ -5,12 +5,14 @@ import com.sun.drop.WorkflowX.dto.WorkOrderResponseDto;
 import com.sun.drop.WorkflowX.entities.Asset;
 import com.sun.drop.WorkflowX.entities.User;
 import com.sun.drop.WorkflowX.entities.WorkOrder;
+import com.sun.drop.WorkflowX.entities.enums.WorkOrderStatus;
 import com.sun.drop.WorkflowX.mapper.WorkOrderMapper;
 import com.sun.drop.WorkflowX.repository.AssetRepository;
 import com.sun.drop.WorkflowX.repository.UserRepository;
 import com.sun.drop.WorkflowX.repository.WorkOrderRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -51,10 +53,19 @@ public class WorkOrderService {
     }
 
     //Get Work order by Id
+    @Transactional(readOnly = true)
     public WorkOrderResponseDto getWorkOrderById(Long id) {
         WorkOrder  workOrder = workOrderRepository
                 .findById(id)
                 .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND,"WorkOrder not found"));
         return WorkOrderMapper.toDto(workOrder);
+    }
+    // Update Work order status
+    @Transactional
+    public void updateWorkOrderStatus(WorkOrderStatus status, Long id) {
+        int updated = this.workOrderRepository.setStatus(status,id);
+        if (updated == 0) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"WorkOrder not found");
+        }
     }
 }
