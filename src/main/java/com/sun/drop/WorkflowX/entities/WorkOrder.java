@@ -2,6 +2,7 @@ package com.sun.drop.WorkflowX.entities;
 
 import com.sun.drop.WorkflowX.audits.Auditable;
 import com.sun.drop.WorkflowX.entities.enums.WorkOrderStatus;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -31,6 +32,7 @@ public class WorkOrder extends Auditable {
 
     @ManyToOne
     @JoinColumn(name = "assigned_to_id")
+    @Nullable
     private User assignedTo;
 
     @Enumerated(EnumType.STRING)

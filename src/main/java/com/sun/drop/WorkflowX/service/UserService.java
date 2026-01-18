@@ -35,7 +35,8 @@ public class UserService {
         // Get user By Id
         @Transactional(readOnly = true)
         public UserResponseDto getUserById(Long id) {
-            User user = this.userRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
+            User user = this.userRepository
+                    .findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
             return UserMapper.toDto(user);
         }
 }
