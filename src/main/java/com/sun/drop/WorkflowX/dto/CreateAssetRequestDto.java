@@ -11,13 +11,10 @@ import lombok.Setter;
 public class CreateAssetRequestDto {
     @NotBlank
     String name;
-
     @NotBlank
     String type;
-
     @NotBlank
     String location;
-
     @NotNull
     AssetStatus status;
 }
