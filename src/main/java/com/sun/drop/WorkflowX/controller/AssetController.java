@@ -17,7 +17,7 @@ import java.util.List;
 @RequestMapping("/assets")
 public class AssetController {
 
-    private AssetService assetService;
+    private final AssetService assetService;
     public AssetController(AssetService assetService) {
         this.assetService = assetService;
     }
